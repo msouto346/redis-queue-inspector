@@ -1,7 +1,13 @@
 {
     "name": "msouto/redis-queue-inspector",
     "description": "A simple cli command to inspect Laravel Redis queues.",
-    "keywords": ["php", "laravel", "redis", "queue", "inspector"],
+    "keywords": [
+        "php",
+        "laravel",
+        "redis",
+        "queue",
+        "inspector"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -14,38 +20,24 @@
     },
     "require-dev": {
         "laravel/pint": "^1.2.0",
-        "pestphp/pest": "^2.0.0",
-        "phpstan/phpstan": "^1.8.6",
-        "symfony/var-dumper": "^6.2.0"
+        "phpstan/phpstan": "^1.8.6"
     },
     "autoload": {
         "psr-4": {
             "Msouto\\RedisQueueInspector\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
         "sort-packages": true,
-        "preferred-install": "dist",
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
+        "preferred-install": "dist"
     },
-    "scripts": {
-        "lint": "pint -v",
-        "test:lint": "pint --test -v",
-        "test:types": "phpstan analyse --ansi",
-        "test:unit": "pest --colors=always",
-        "test": [
-            "@test:lint",
-            "@test:types",
-            "@test:unit"
-        ]
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Msouto\\RedisQueueInspector\\Providers\\RedisQueueInspectorServiceProvider"
+            ]
+        }
     }
 }
