@@ -7,7 +7,7 @@ A simple CLI tool to inspect **delayed Redis queue jobs** in Laravel. Useful for
 Install the package via Composer:
 
 ```bash
-composer require msouto/redis-queue-inspector --dev
+composer require msouto/redis-queue-inspector
 ```
 
 Laravel will auto-discover the service provider, no manual registration needed.
