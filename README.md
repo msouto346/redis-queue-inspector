@@ -79,10 +79,8 @@ Tip: Run with --page=2 to see more.
 ```
 
 ## 🛠 Requirements
-
-- Laravel 9 or 10
-- Redis queue driver (`QUEUE_CONNECTION=redis`)
 - PHP 8.1+
+- Laravel with Redis queue driver enabled
 
 ## 📄 License
 
