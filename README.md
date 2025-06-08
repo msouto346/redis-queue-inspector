@@ -69,10 +69,9 @@ php artisan queue:inspect --job=SendInvoice --count
 
 ### Output results in JSON format
 
-You can use the `--json` flag to get machine-readable output for scripting or automation:
-
 ```bash
 php artisan queue:inspect --queue=emails --job=SendWelcome --limit=2 --json
+```
 
 ## 📌 Output Example
 
