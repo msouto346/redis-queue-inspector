@@ -28,11 +28,11 @@ final class Scanner
             foreach ($jobs as $payload => $timestamp) {
                 $releaseTime = Carbon::createFromTimestamp($timestamp);
 
-                if ($query->after && $releaseTime->lt($query->after)) {
+                if ($query->from && $releaseTime->lt($query->from)) {
                     continue;
                 }
 
-                if ($query->before && $releaseTime->gt($query->before)) {
+                if ($query->to && $releaseTime->gt($query->to)) {
                     continue;
                 }
 

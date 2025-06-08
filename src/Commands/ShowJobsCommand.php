@@ -40,8 +40,8 @@ final class ShowJobsCommand extends Command
         $query = new JobQuery(
             queues: $queues,
             jobFilter: $jobFilter,
-            after: $from,
-            before: $to,
+            from: $from,
+            to: $to,
             limit: $limit,
             page: $page,
             identifier: $identifier,
