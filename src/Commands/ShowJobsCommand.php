@@ -20,7 +20,8 @@ final class ShowJobsCommand extends Command
         {--page=1 : Page number for pagination}
         {--count : Only return a total count of matching jobs}
         {--identifier= : Return jobs that reference this model ID anywhere in the payload}
-        {--uuid= : Filter by exact job UUID}';
+        {--uuid= : Filter by exact job UUID}
+        {--json : Output results in JSON format}';
 
     protected $description = 'Inspect delayed Redis queue jobs with filters';
 
@@ -54,12 +55,30 @@ final class ShowJobsCommand extends Command
         $total = $result['total'];
 
         if ($this->option('count')) {
-            $this->info("{$total} matching delayed jobs.");
+            if ($this->option('json')) {
+                $this->line(json_encode(['count' => $total], JSON_PRETTY_PRINT));
+            } else {
+                $this->info("{$total} matching delayed jobs.");
+            }
             return;
         }
 
         if (empty($jobs)) {
-            $this->warn('No matching delayed jobs found.');
+            if ($this->option('json')) {
+                $this->line(json_encode(['jobs' => []], JSON_PRETTY_PRINT));
+            } else {
+                $this->warn('No matching delayed jobs found.');
+            }
+            return;
+        }
+
+        if ($this->option('json')) {
+            $this->line(json_encode([
+                'total' => $total,
+                'page' => $page,
+                'limit' => $limit,
+                'jobs' => $jobs,
+            ], JSON_PRETTY_PRINT));
             return;
         }
 
