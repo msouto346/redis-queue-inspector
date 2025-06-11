@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Msouto\RedisQueueInspector\Commands;
+namespace Pdmfc\RedisQueueInspector\Commands;
 
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use Msouto\RedisQueueInspector\Dto\JobQuery;
-use Msouto\RedisQueueInspector\Services\Scanner;
+use Pdmfc\RedisQueueInspector\Dto\JobQuery;
+use Pdmfc\RedisQueueInspector\Services\Scanner;
 
 final class ShowJobsCommand extends Command
 {
