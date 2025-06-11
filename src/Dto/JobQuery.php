@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Msouto\RedisQueueInspector\Dto;
+namespace Pdmfc\RedisQueueInspector\Dto;
 
 use Carbon\Carbon;
 

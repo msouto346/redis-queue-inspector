@@ -1,5 +1,5 @@
 {
-    "name": "msouto/redis-queue-inspector",
+    "name": "pdmfc/redis-queue-inspector",
     "description": "A simple cli command to inspect Laravel Redis queues.",
     "keywords": [
         "php",
@@ -12,7 +12,8 @@
     "authors": [
         {
             "name": "Mário Souto",
-            "email": "mario.cs1@gmail.com"
+            "email": "mario.souto@pdmfc.com",
+            "role": "Developer"
         }
     ],
     "require": {
@@ -27,7 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Msouto\\RedisQueueInspector\\": "src/"
+            "Pdmfc\\RedisQueueInspector\\": "src/"
         }
     },
     "autoload-dev": {
@@ -47,7 +48,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Msouto\\RedisQueueInspector\\Providers\\RedisQueueInspectorServiceProvider"
+                "Pdmfc\\RedisQueueInspector\\Providers\\RedisQueueInspectorServiceProvider"
             ]
         }
     }

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Msouto\RedisQueueInspector\Providers;
+namespace Pdmfc\RedisQueueInspector\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Msouto\RedisQueueInspector\Commands\ShowJobsCommand;
+use Pdmfc\RedisQueueInspector\Commands\ShowJobsCommand;
 
 final class RedisQueueInspectorServiceProvider extends ServiceProvider
 {

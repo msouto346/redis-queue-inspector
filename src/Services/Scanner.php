@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Msouto\RedisQueueInspector\Services;
+namespace Pdmfc\RedisQueueInspector\Services;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redis;
-use Msouto\RedisQueueInspector\Dto\JobQuery;
+use Pdmfc\RedisQueueInspector\Dto\JobQuery;
 
 final class Scanner
 {
