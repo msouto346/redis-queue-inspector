@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Pdmfc\RedisQueueInspector\Providers\RedisQueueInspectorServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Pdmfc\RedisQueueInspector\Providers\RedisQueueInspectorServiceProvider;
 
 abstract class TestCase extends Orchestra
 {

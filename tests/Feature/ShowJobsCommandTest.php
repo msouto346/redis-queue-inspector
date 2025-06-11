@@ -1,22 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Redis;
+
 use function Pest\Laravel\artisan;
 
-beforeEach(function () {
+beforeEach(function (): void {
     Redis::flushall();
 });
 
-it('shows message when no jobs exist', function () {
+it('shows message when no jobs exist', function (): void {
     artisan('queue:inspect')
         ->assertSuccessful()
         ->expectsOutput('No matching delayed jobs found.');
 });
 
-it('filters by --queue', function () {
+it('filters by --queue', function (): void {
     $payload = json_encode([
         'uuid' => 'uuid-queue-1',
         'displayName' => 'App\\Jobs\\QueuedJob',
@@ -34,7 +37,7 @@ it('filters by --queue', function () {
         ->expectsOutput(json_encode(['count' => 1], JSON_PRETTY_PRINT));
 });
 
-it('filters by --job (partial match)', function () {
+it('filters by --job (partial match)', function (): void {
     $payload = json_encode([
         'uuid' => 'uuid-job-1',
         'displayName' => 'App\\Jobs\\TestNotificationJob',
@@ -48,7 +51,7 @@ it('filters by --job (partial match)', function () {
         ->expectsOutput(json_encode(['count' => 1], JSON_PRETTY_PRINT));
 });
 
-it('filters by --uuid (exact match)', function () {
+it('filters by --uuid (exact match)', function (): void {
     $uuid = 'exact-uuid-1234';
     $payload = json_encode([
         'uuid' => $uuid,
@@ -63,7 +66,7 @@ it('filters by --uuid (exact match)', function () {
         ->expectsOutput(json_encode(['count' => 1], JSON_PRETTY_PRINT));
 });
 
-it('filters by --identifier (serialized in payload)', function () {
+it('filters by --identifier (serialized in payload)', function (): void {
     $identifier = 42;
     $serialized = serialize((object) ['id' => $identifier]);
 
@@ -80,7 +83,7 @@ it('filters by --identifier (serialized in payload)', function () {
         ->expectsOutput(json_encode(['count' => 1], JSON_PRETTY_PRINT));
 });
 
-it('filters jobs by --from and --to date range', function () {
+it('filters jobs by --from and --to date range', function (): void {
     $today = now();
     $releaseAt = $today->copy()->addHours(2); // falls within today
 
@@ -99,7 +102,7 @@ it('filters jobs by --from and --to date range', function () {
         ->and($json['jobs'][0]['job'])->toBe('App\\Jobs\\ScheduledJob');
 });
 
-it('respects --limit and --page', function () {
+it('respects --limit and --page', function (): void {
     Redis::flushall();
 
     foreach (range(1, 5) as $i) {
@@ -131,7 +134,7 @@ it('respects --limit and --page', function () {
     expect($jsonPage2['jobs'][1]['job'])->toBe('App\\Jobs\\PaginatedJob4');
 });
 
-it('outputs in JSON when --json is used', function () {
+it('outputs in JSON when --json is used', function (): void {
     Redis::flushall();
 
     Redis::zadd('queues:default:delayed', time() + 300, json_encode([
@@ -151,7 +154,7 @@ it('outputs in JSON when --json is used', function () {
         ->and($data['jobs'][0]['job'])->toBe('App\\Jobs\\JsonJob');
 });
 
-it('shows total count when using --count', function () {
+it('shows total count when using --count', function (): void {
     Redis::zadd('queues:default:delayed', time() + 300, json_encode([
         'uuid' => 'uuid-count',
         'displayName' => 'App\\Jobs\\CountingJob',
