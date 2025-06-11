@@ -20,6 +20,9 @@
     },
     "require-dev": {
         "laravel/pint": "^1.2.0",
+        "orchestra/testbench": "^8.36",
+        "pestphp/pest": "^2.36",
+        "pestphp/pest-plugin-laravel": "^2.4",
         "phpstan/phpstan": "^1.8.6"
     },
     "autoload": {
@@ -27,11 +30,19 @@
             "Msouto\\RedisQueueInspector\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
         "sort-packages": true,
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "extra": {
         "laravel": {
